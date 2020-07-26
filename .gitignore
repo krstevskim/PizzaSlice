@@ -1,23 +1,72 @@
-# Compiled class file
-*.class
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# Log file
-*.log
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-# BlueJ files
-*.ctxt
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+### VS Code ###
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+./PizzaSlice-fe/.sass-cache
+./PizzaSlice-fe/connect.lock
+./PizzaSlice-fe/coverage
+./PizzaSlice-fe/libpeerconnection.log
+./PizzaSlice-fe/npm-debug.log
+./PizzaSlice-fe/yarn-error.log
+./PizzaSlice-fe/testem.log
+./PizzaSlice-fe/typings
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# dependencies
+./PizzaSlice-fe/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+#Compiled Output
+
+./PizzaSlice-fe/dist
+./PizzaSlice-fe/tmp
+./PizzaSlice-fe/out-tsc
+# Only exists if Bazel was run
+./PizzaSlice-fe/bazel-out
+
+.DS_Store
+Thumbs.db
