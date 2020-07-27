@@ -1,6 +1,7 @@
 # PizzaSlice
 Online Pizza shop for Korisnicki Interfejsi
 
+![Logo](https://github.com/krstevskim/PizzaSlice/blob/master/logo.jpg)
 
 How To:
 
