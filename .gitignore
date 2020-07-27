@@ -70,3 +70,14 @@ speed-measure-plugin*.json
 
 .DS_Store
 Thumbs.db
+
+#package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+# Compiled class file
+*.class
