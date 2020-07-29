@@ -33,7 +33,7 @@ public class PizzaController {
         return pizzaService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public Pizza addPizza(@NotNull @RequestBody Pizza pizza){
         return pizzaService.addPizza(pizza);
     }

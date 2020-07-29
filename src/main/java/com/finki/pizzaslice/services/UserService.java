@@ -38,7 +38,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public boolean isAdmin(Long id){
+    public Boolean isAdmin(Long id){
         final User user = userRepository.findById(id).orElseThrow();
         return user.isAdmin();
     }
