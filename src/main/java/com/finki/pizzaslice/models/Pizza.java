@@ -15,4 +15,15 @@ public class Pizza {
     @Column
     private Double price;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
 }

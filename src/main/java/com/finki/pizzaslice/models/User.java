@@ -25,4 +25,20 @@ public class User {
     public boolean isAdmin(){
         return role;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
 }
