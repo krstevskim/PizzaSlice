@@ -3,24 +3,26 @@ package com.finki.pizzaslice.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name="users", schema = "db")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer user_id;
-
-    @Column
-    private boolean isAdmin;
-
-    @Column
-    private String address;
+    private Long id;
 
     @Column
     private String name;
 
     @Column
-    private String surname;
+    private String address;
 
     @Column
-    private String phoneNumber;
+    private boolean role;
+
+    @Column
+    private String mobile;
+
+    public boolean isAdmin(){
+        return role;
+    }
 }

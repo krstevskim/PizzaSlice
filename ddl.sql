@@ -1,3 +1,8 @@
+create schema db;
+
+alter schema db owner to pizzaslice;
+
+
 create table db.users
 (
 	id bigserial not null
