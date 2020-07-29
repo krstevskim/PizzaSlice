@@ -3,8 +3,8 @@ package com.finki.pizzaslice.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="pizzas", schema = "db")
-public class Pizza {
+@Table(name = "ingredients",schema = "db")
+public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,18 +13,11 @@ public class Pizza {
     @Column
     private String name;
 
-    @Column
-    private Double price;
-
     public Long getId() {
         return id;
     }
 
     public String getName() {
         return name;
-    }
-
-    public Double getPrice() {
-        return price;
     }
 }
