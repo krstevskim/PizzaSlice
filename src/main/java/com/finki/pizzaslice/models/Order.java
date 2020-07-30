@@ -24,10 +24,15 @@ public class Order {
     private Integer time;
 
     @Column
-    private String promo;
+    private Long user_id;
 
-    @OneToOne
-    @JoinColumn(name = "fk_user",referencedColumnName = "id")
+
+//    @OneToOne
+//    @JoinColumn(name = "fk_user",referencedColumnName = "id")
+//    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id",nullable = false,insertable = false,updatable = false)
     private User user;
 
     public Long getId() {
@@ -50,11 +55,8 @@ public class Order {
         return time;
     }
 
-    public String getPromo() {
-        return promo;
-    }
 
-    public User getUser() {
-        return user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
 }

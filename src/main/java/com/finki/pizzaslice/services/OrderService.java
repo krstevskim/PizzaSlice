@@ -26,8 +26,6 @@ public class OrderService {
         return orderRepository.findById(id);
     }
 
-    public List<Order> getOrdersByUserId(Long user_id){
-        return orderRepository.getOrdersByUserId(user_id);
-    }
+
 
 }
