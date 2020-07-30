@@ -1,7 +1,8 @@
 DROP SCHEMA IF EXISTS db  CASCADE;
 CREATE SCHEMA db AUTHORIZATION pizzaslice;
 
-create table db.users
+
+create table users
 (
     id bigserial not null
         constraint users_pk
@@ -12,12 +13,12 @@ create table db.users
     mobile varchar not null
 );
 
-alter table db.users owner to pizzaslice;
+alter table users owner to pizzaslice;
 
 create unique index users_id_uindex
-    on db.users (id);
+    on users (id);
 
-create table db.orders
+create table orders
 (
     id bigserial not null
         constraint orders_pk
@@ -27,112 +28,94 @@ create table db.orders
     price integer not null,
     address varchar not null,
     time integer,
-    promo varchar,
-    fk_user bigint not null
-        constraint orders_users_id_fk
-            references db.users
+    user_id integer
 );
 
-alter table db.orders owner to pizzaslice;
+alter table orders owner to pizzaslice;
 
 create unique index orders_id_uindex
-    on db.orders (id);
+    on orders (id);
 
-create table db.pizzas
+create table pizzas
 (
     id bigserial not null
         constraint pizzas_pk
             primary key,
     name varchar not null,
-    price integer not null
+    price integer not null,
+    order_id integer
 );
 
-alter table db.pizzas owner to pizzaslice;
+alter table pizzas owner to pizzaslice;
 
 create unique index pizzas_id_uindex
-    on db.pizzas (id);
+    on pizzas (id);
 
-create table db.ingredients
+create table ingredients
 (
     id bigserial not null
         constraint ingredients_pk
             primary key,
-    name varchar not null
+    name varchar not null,
+    pizza_id integer
 );
 
-alter table db.ingredients owner to pizzaslice;
+alter table ingredients owner to pizzaslice;
 
 create unique index ingredients_id_uindex
-    on db.ingredients (id);
+    on ingredients (id);
 
-create table db.extras
+create table extras
 (
     id bigserial not null
         constraint extras_pk
             primary key,
     name varchar not null,
-    price integer not null
+    price integer not null,
+    order_id integer
 );
 
-alter table db.extras owner to pizzaslice;
+alter table extras owner to pizzaslice;
 
 create unique index extras_id_uindex
-    on db.extras (id);
+    on extras (id);
 
-create table db.extras_pizza
-(
-    id bigserial not null
-        constraint extras_pizza_pk
-            primary key,
-    fk_extra bigint
-        constraint extras_pizza_extras_id_fk
-            references db.extras,
-    fk_pizza bigint
-        constraint extras_pizza_pizzas_id_fk
-            references db.pizzas
-);
-
-alter table db.extras_pizza owner to pizzaslice;
-
-create unique index extras_pizza_id_uindex
-    on db.extras_pizza (id);
-
-create table db.ingredients_pizza
+create table ingredients_pizza
 (
     id bigserial not null
         constraint ingredients_pizza_pk
             primary key,
     fk_ingredient bigint
         constraint ingredients_pizza_ingredients_id_fk
-            references db.ingredients,
+            references ingredients,
     fk_pizza bigint
         constraint ingredients_pizza_pizzas_id_fk
-            references db.pizzas
+            references pizzas
 );
 
-alter table db.ingredients_pizza owner to pizzaslice;
+alter table ingredients_pizza owner to pizzaslice;
 
 create unique index ingredients_pizza_id_uindex
-    on db.ingredients_pizza (id);
+    on ingredients_pizza (id);
 
-create table db.order_pizza_extras
+create table order_pizza_extras
 (
     fk_pizza integer not null
         constraint order_pizza_extras_pizzas_id_fk
-            references db.pizzas,
+            references pizzas,
     fk_order integer not null
         constraint order_pizza_extras_orders_id_fk
-            references db.orders,
+            references orders,
     fk_extras integer
         constraint order_pizza_extras_extras_id_fk
-            references db.extras,
+            references extras,
     id serial not null
         constraint order_pizza_extras_pk
             primary key
 );
 
-alter table db.order_pizza_extras owner to pizzaslice;
+alter table order_pizza_extras owner to pizzaslice;
 
 create unique index order_pizza_extras_id_uindex
-    on db.order_pizza_extras (id);
+    on order_pizza_extras (id);
 
