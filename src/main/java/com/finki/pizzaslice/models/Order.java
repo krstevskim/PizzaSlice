@@ -2,6 +2,7 @@ package com.finki.pizzaslice.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders",schema = "db")
@@ -35,6 +36,12 @@ public class Order {
     @JoinColumn(name = "user_id",nullable = false,insertable = false,updatable = false)
     private User user;
 
+    @OneToMany(mappedBy = "order")
+    private Set<Pizza> pizzas;
+
+    @OneToMany(mappedBy = "order")
+    private Set<Extra> extras;
+
     public Long getId() {
         return id;
     }
@@ -53,6 +60,14 @@ public class Order {
 
     public Integer getTime() {
         return time;
+    }
+
+    public Set<Pizza> getPizzas() {
+        return pizzas;
+    }
+
+    public Set<Extra> getExtras() {
+        return extras;
     }
 
 
