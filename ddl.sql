@@ -27,10 +27,7 @@ create table db.orders
     price integer not null,
     address varchar not null,
     time integer,
-    promo varchar,
-    fk_user bigint not null
-        constraint orders_users_id_fk
-            references db.users
+    user_id integer
 );
 
 alter table db.orders owner to pizzaslice;
@@ -44,7 +41,8 @@ create table db.pizzas
         constraint pizzas_pk
             primary key,
     name varchar not null,
-    price integer not null
+    price integer not null,
+    order_id integer
 );
 
 alter table db.pizzas owner to pizzaslice;
@@ -57,7 +55,8 @@ create table db.ingredients
     id bigserial not null
         constraint ingredients_pk
             primary key,
-    name varchar not null
+    name varchar not null,
+    pizza_id integer
 );
 
 alter table db.ingredients owner to pizzaslice;
@@ -71,31 +70,14 @@ create table db.extras
         constraint extras_pk
             primary key,
     name varchar not null,
-    price integer not null
+    price integer not null,
+    order_id integer
 );
 
 alter table db.extras owner to pizzaslice;
 
 create unique index extras_id_uindex
     on db.extras (id);
-
-create table db.extras_pizza
-(
-    id bigserial not null
-        constraint extras_pizza_pk
-            primary key,
-    fk_extra bigint
-        constraint extras_pizza_extras_id_fk
-            references db.extras,
-    fk_pizza bigint
-        constraint extras_pizza_pizzas_id_fk
-            references db.pizzas
-);
-
-alter table db.extras_pizza owner to pizzaslice;
-
-create unique index extras_pizza_id_uindex
-    on db.extras_pizza (id);
 
 create table db.ingredients_pizza
 (
