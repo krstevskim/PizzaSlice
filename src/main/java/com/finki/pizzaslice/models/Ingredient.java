@@ -13,6 +13,13 @@ public class Ingredient {
     @Column
     private String name;
 
+    @Column
+    private Long pizza_id;
+
+    @ManyToOne
+    @JoinColumn(name = "pizza_id",nullable = false,insertable = false,updatable = false)
+    private Pizza pizza;
+
     public Long getId() {
         return id;
     }

@@ -1,11 +1,10 @@
 package com.finki.pizzaslice.models;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
-@Table(name="pizzas", schema = "db")
-public class Pizza {
+@Table(name = "extras",schema = "db")
+public class Extra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,13 +14,10 @@ public class Pizza {
     private String name;
 
     @Column
-    private Double price;
+    private double price;
 
     @Column
     private Long order_id;
-
-    @OneToMany(mappedBy = "pizza")
-    private Set<Ingredient> ingredients;
 
     @ManyToOne
     @JoinColumn(name = "order_id",nullable = false,insertable = false,updatable = false)
@@ -35,12 +31,7 @@ public class Pizza {
         return name;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
-
-    public Set<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
 }

@@ -1,6 +1,7 @@
 package com.finki.pizzaslice.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="users", schema = "db")
@@ -22,8 +23,11 @@ public class User {
     @Column
     private String mobile;
 
-    @OneToOne(mappedBy = "user")
-    private Order order;
+//    @OneToOne(mappedBy = "user")
+//    private Order order;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Order> orders;
 
     public Boolean isAdmin(){
         return role;
@@ -43,5 +47,9 @@ public class User {
 
     public String getMobile() {
         return mobile;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
     }
 }

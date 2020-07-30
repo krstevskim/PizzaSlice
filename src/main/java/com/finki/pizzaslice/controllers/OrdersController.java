@@ -29,13 +29,13 @@ public class OrdersController {
         return orderService.getAllOrders();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Optional<Order> getOrderById(@PathVariable("id") Long id){
         return orderService.getOrderById(id);
     }
-
-    @GetMapping("{id}/byuser")
-    public List<Order> getOrdersByForUser(@PathVariable("id") Long id){
-        return orderService.getOrdersByUserId(id);
-    }
+//
+//    @GetMapping("/user/{id}")
+//    public List<Order> getOrdersForUser(@PathVariable("id") Long id){
+//        return orderService.getOrdersByUserId(id);
+//    }
 }
