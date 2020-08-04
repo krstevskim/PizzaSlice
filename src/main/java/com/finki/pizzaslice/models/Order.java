@@ -27,6 +27,9 @@ public class Order {
     @Column
     private Long user_id;
 
+    @Column
+    private String address;
+
 
 //    @OneToOne
 //    @JoinColumn(name = "fk_user",referencedColumnName = "id")
@@ -64,6 +67,10 @@ public class Order {
 
     public Set<Pizza> getPizzas() {
         return pizzas;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public Set<Extra> getExtras() {

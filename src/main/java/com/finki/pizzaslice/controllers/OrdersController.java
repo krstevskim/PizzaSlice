@@ -4,11 +4,9 @@ package com.finki.pizzaslice.controllers;
 import com.finki.pizzaslice.models.Order;
 
 import com.finki.pizzaslice.services.OrderService;
+import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +30,11 @@ public class OrdersController {
     @GetMapping("/{id}")
     public Optional<Order> getOrderById(@PathVariable("id") Long id){
         return orderService.getOrderById(id);
+    }
+
+    @PostMapping("/add")
+    public Order addOrder(@NotNull @RequestBody Order order){
+        return orderService.addOrder(order);
     }
 
 //    @GetMapping("/user/{id}")
