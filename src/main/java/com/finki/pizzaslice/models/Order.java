@@ -33,7 +33,7 @@ public class Order {
 //    private User user;
 
     @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "fk_user",nullable = false,insertable = false,updatable = false)
     private User user;
 
     @OneToMany(mappedBy = "order")
