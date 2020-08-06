@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Pizza} from '../models/pizza';
 import {Ingredient} from '../models/ingredient';
 import {FormControl} from '@angular/forms';
+import { Extra } from '../models/extra';
+import { OrderRequest } from '../models/orderRequest';
 
 @Component({
   selector: 'app-order',
@@ -48,6 +50,16 @@ export class NewOrderComponent implements OnInit {
       {id:8, name: "Pizza8", ingredients: this.ingredients, price: 220},
       {id:9, name: "Pizza9", ingredients: this.ingredients, price: 220}
   ];
+    extras: Extra[] = [
+        {id:1, name:"Extra1", price: 120},
+        {id:2, name:"Extra2", price: 150},
+        {id:3, name:"Extra3", price: 130},
+        {id:4, name:"Extra4", price: 220},
+        {id:5, name:"Extra5", price: 520},
+    ]
+    selectedExtras: Extra[] = [];
+
+    orders: OrderRequest[] = [];
   ngOnInit(): void {
   }
 
@@ -55,11 +67,46 @@ export class NewOrderComponent implements OnInit {
   filterQuery() {
        return this.pizzas.filter(pizza => this.filterIngredientsModel.every(ing => pizza.ingredients.find(i => i.id == ing)));
   }
-  pizzaClick(event){
-    console.log(event);
-  }
+
   onSelectedPizza(event: Pizza){
       this.selectedPizza = event;
       console.log("new selected pizza", event);
   }
+  onSelectedExtras(event: Extra[]) {
+        this.selectedExtras = event;
+  }
+
+  concatExtras(extras: Extra[]){
+      return extras.join(",");
+  }
+  calculatePriceOfOrder(order: OrderRequest) {
+        let price = 0;
+        price +=order.pizzas.price;
+        order.extras.map(extra => {
+            price += extra.price;
+        })
+      return price;
+  }
+
+    removeOrder(order: OrderRequest) {
+      const index = this.orders.indexOf(order);
+        if (index > -1) {
+            this.orders.splice(index, 1);
+        }
+    }
+
+    addOrder() {
+
+      console.log(this.selectedPizza);
+      console.log(this.selectedExtras);
+        if(this.selectedPizza != null){
+            let newOrder = {pizzas: this.selectedPizza, extras: this.selectedExtras};
+            this.orders.push(newOrder);
+        }
+        this.selectedPizza = null;
+        this.selectedExtras = [];
+    }
+    editOrder(order: OrderRequest) {
+        this.selectedPizza = order.pizzas;
+    }
 }

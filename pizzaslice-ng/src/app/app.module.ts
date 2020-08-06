@@ -35,6 +35,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PizzaComponent } from './pizza/pizza.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatChipsModule} from '@angular/material/chips';
+import { ExtraComponent } from './extra/extra.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatChipsModule} from '@angular/material/chips';
     NewOrderComponent,
     OrderComponent,
     OrdersComponent,
-    PizzaComponent
+    PizzaComponent,
+    ExtraComponent
   ],
     imports: [
         BrowserModule,

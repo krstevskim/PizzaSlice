@@ -1,0 +1,11 @@
+.max-width-img {
+    max-width: 15%
+}
+.selected-extra{
+    border: 3px solid orange;
+}
+
+.not-selected-extra {
+
+    border: 1px solid black;
+}

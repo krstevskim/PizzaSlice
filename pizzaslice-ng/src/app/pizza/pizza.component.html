@@ -1,27 +1,4 @@
 <div >
-<!--    <mat-grid-list [cols]="4" rowHeight="1:1.5" gutterSize="30px">-->
-<!--        <mat-grid-tile *ngFor="let pizza of pizzas" class="max-width-img px-5">-->
-<!--    <mat-card (click)="onClick(pizza)" matRipple-->
-<!--              [ngClass]="{'selected-pizza': pizza === selectedPizza, 'not-selected-pizza':pizza !== selectedPizza }">-->
-<!--        <mat-card-header>-->
-<!--            <mat-card-title>-->
-<!--                {{pizza.name}}-->
-<!--            </mat-card-title>-->
-<!--        </mat-card-header>-->
-<!--        <mat-card-content>-->
-<!--            <div class="row px-3">-->
-<!--                <img src='../assets/logo2.jpg' class="card-img">-->
-<!--            </div>-->
-<!--            <div class="row px-3">-->
-<!--                Ingredients: {{chainIngredients(pizza.ingredients) }}-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--                {{pizza.price}}-->
-<!--            </div>-->
-<!--        </mat-card-content>-->
-<!--    </mat-card>-->
-<!--        </mat-grid-tile>-->
-<!--    </mat-grid-list>-->
     <div class="d-flex flex-wrap">
         <div class="p-2 flex-fill max-width-img" *ngFor="let pizza of pizzas"  >
             <mat-card (click)="onClick(pizza)" matRipple

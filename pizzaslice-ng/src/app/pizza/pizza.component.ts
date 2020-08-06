@@ -13,15 +13,15 @@ export class PizzaComponent implements OnInit {
 
   @Input() pizzas: Pizza[];
 
-  @Output() selectedP = new EventEmitter<Pizza>();
+  @Input() selectedPizza: Pizza;
+  @Output() selectedPizzaChange = new EventEmitter<Pizza>();
 
-  selectedPizza: Pizza;
   ngOnInit(): void {
 
   }
 
   onClick(event){
       this.selectedPizza = event;
-      this.selectedP.emit(event);
+      this.selectedPizzaChange.emit(event);
   }
 }
