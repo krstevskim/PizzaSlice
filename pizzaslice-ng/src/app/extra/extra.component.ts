@@ -13,25 +13,25 @@ export class ExtraComponent implements OnInit {
 
     @Input() extras: Extra[];
 
-    @Output() selectedExtras = new EventEmitter<Extra[]>();
-    selectedExtrasArray: Extra[] = [];
+    @Output() selectedExtrasChange = new EventEmitter<Extra[]>();
+    @Input() selectedExtras: Extra[] = [];
 
     ngOnInit(): void {
     }
 
     onClick(extra: Extra) {
-        const index = this.selectedExtrasArray.indexOf(extra);
+        const index = this.selectedExtras.indexOf(extra);
         if (index > -1) {
-            this.selectedExtrasArray.splice(index, 1);
+            this.selectedExtras.splice(index, 1);
         }
         else {
-            this.selectedExtrasArray.push(extra);
+            this.selectedExtras.push(extra);
         }
-        console.log(this.selectedExtrasArray);
-        this.selectedExtras.emit(this.selectedExtrasArray);
+        console.log(this.selectedExtras);
+        this.selectedExtrasChange.emit(this.selectedExtras);
     }
 
     ifContains(extra: Extra) {
-        return this.selectedExtrasArray.includes(extra);
+        return this.selectedExtras.includes(extra);
     }
 }

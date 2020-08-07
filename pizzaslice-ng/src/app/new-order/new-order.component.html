@@ -26,7 +26,7 @@
                 </mat-step>
                 <mat-step>
                     <ng-template matStepLabel>Select Extras</ng-template>
-                    <app-extra [extras]="extras" (selectedExtras)='onSelectedExtras($event)'></app-extra>
+                    <app-extra [extras]="extras" [(selectedExtras)]='selectedExtras'></app-extra>
                 </mat-step>
             </mat-vertical-stepper>
         </mat-card-content>
@@ -34,16 +34,20 @@
 </div>
 <div>
     <mat-list>
-        <mat-list-item *ngFor='let order of orders'>Pizza: {{order.pizzas}}
+        <mat-list-item *ngFor='let order of orders'>Pizza: {{order.pizzas.name}}
             Extras: {{concatExtras(order.extras)}}
             Price: {{calculatePriceOfOrder(order)}}
-            <button mat-button (click)='editOrder(order)' color='warn'>
+            <button mat-button (click)='editOrder(order)' color='warn' *ngIf="editingOrder != order">
                 <span class="material-icons">create</span>
-            </button>'
+            </button>
+            <button mat-button (click)='saveOrder(order)' color='warn' *ngIf="editingOrder == order">
+                <span class="material-icons">save_alt</span>
+            </button>
             <button mat-button (click)='removeOrder(order)' color='warn'>
                 <span class="material-icons">delete_forever</span>
-            </button>'
+            </button>
+
         </mat-list-item>
     </mat-list>
 </div>
-<button mat-button (click)='addOrder()'>Add Order</button>
+<button mat-button (click)='addOrder()' *ngIf="!editingOrder">Add Order</button>
