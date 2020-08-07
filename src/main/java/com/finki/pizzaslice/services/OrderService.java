@@ -26,6 +26,8 @@ public class OrderService {
         return orderRepository.findById(id);
     }
 
-
+    public Order addOrder(Order order){
+        return orderRepository.save(order);
+    }
 
 }
