@@ -1,5 +1,6 @@
 package com.finki.pizzaslice.services;
 
+import com.finki.pizzaslice.models.Ingredient;
 import com.finki.pizzaslice.models.Pizza;
 import com.finki.pizzaslice.models.User;
 import com.finki.pizzaslice.repos.PizzaRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class PizzaService {
@@ -32,4 +34,8 @@ public class PizzaService {
         return pizzaRepository.save(pizza);
     }
 
+    public Set<Ingredient> getIngredients(Long id){
+        Pizza pizza = pizzaRepository.findById(id).orElseThrow();
+        return pizza.getIngredients();
+    }
 }
