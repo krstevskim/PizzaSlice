@@ -1,0 +1,53 @@
+<div>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                New Order
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-vertical-stepper linear #stepper>
+
+                <mat-step>
+                    <ng-template matStepLabel>
+                        Select Pizza
+                    </ng-template>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Toppings</mat-label>
+                        <mat-select [formControl]="filterIngredients" [(ngModel)]="filterIngredientsModel" multiple (selectionChange)="filterQuery()">
+                            <mat-option *ngFor="let ingredient of allIngredients" [value]="ingredient.id">{{ingredient.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p>{{filterPizzaQuery}}</p>
+                    <app-pizza [pizzas]="filterQuery()" [(selectedPizza)]="selectedPizza"></app-pizza>
+                    <!--                    <button mat-raised-button color="basic" (click)="pizzaClick($event)" value="capriciosa"><img src='../assets/logo2.jpg' class="img-button"></button>-->
+                    <!--                    <button mat-raised-button color="basic" (click)="pizzaClick($event)" value="marg"><img src='../assets/logo2.jpg' class="img-button"></button>-->
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Select Extras</ng-template>
+                    <app-extra [extras]="extras" [(selectedExtras)]='selectedExtras'></app-extra>
+                </mat-step>
+            </mat-vertical-stepper>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div>
+    <mat-list>
+        <mat-list-item *ngFor='let order of orders'>Pizza: {{order.pizzas.name}}
+            Extras: {{concatExtras(order.extras)}}
+            Price: {{calculatePriceOfOrder(order)}}
+            <button mat-button (click)='editOrder(order)' color='warn' *ngIf="editingOrder != order">
+                <span class="material-icons">create</span>
+            </button>
+            <button mat-button (click)='saveOrder(order)' color='warn' *ngIf="editingOrder == order">
+                <span class="material-icons">save_alt</span>
+            </button>
+            <button mat-button (click)='removeOrder(order)' color='warn'>
+                <span class="material-icons">delete_forever</span>
+            </button>
+
+        </mat-list-item>
+    </mat-list>
+</div>
+<button mat-button (click)='addOrder()' *ngIf="!editingOrder">Add Order</button>
