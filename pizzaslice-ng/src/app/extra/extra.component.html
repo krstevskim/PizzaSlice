@@ -1,0 +1,22 @@
+<div >
+    <div class="d-flex flex-wrap">
+        <div class="p-2 flex-fill max-width-img" *ngFor="let extra of extras"  >
+            <mat-card (click)="onClick(extra)" matRipple
+                      [ngClass]="{'selected-extra': ifContains(extra), 'not-selected-extra': !ifContains(extra) }">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{extra.name}}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row px-3">
+                        <img src='../assets/logo2.jpg' class="card-img">
+                    </div>
+                </mat-card-content>
+                <mat-card-footer class="text-center bg-orange">
+                    <h3>{{extra.price}}</h3>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+</div>
