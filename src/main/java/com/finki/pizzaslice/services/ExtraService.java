@@ -21,4 +21,9 @@ public class ExtraService {
         return extraRepository.findAll();
     }
 
+    // no need for this shit
+    public List<Extra> getExtrasForPizza(Long id){
+        return null;
+    }
+
 }

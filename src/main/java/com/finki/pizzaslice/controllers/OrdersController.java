@@ -6,6 +6,7 @@ import com.finki.pizzaslice.models.Order;
 import com.finki.pizzaslice.services.OrderService;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,8 +29,8 @@ public class OrdersController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Order> getOrderById(@PathVariable("id") Long id){
-        return orderService.getOrderById(id);
+    public ResponseEntity<Order> getOrderById(@PathVariable("id") Long id){
+        return ResponseEntity.ok(orderService.getOrderById(id));
     }
 
     @PostMapping("/add")
