@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "pizzaslice-ng"
+  "defaultProject": "pizzaslice-ng",
+  "cli": {
+    "analytics": "8e623be3-c7a4-4e33-aaba-3c3762c4a6b7"
+  }
 }
