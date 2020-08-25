@@ -1,5 +1,6 @@
 package com.finki.pizzaslice.services;
 
+import com.finki.pizzaslice.models.Order;
 import com.finki.pizzaslice.models.User;
 import com.finki.pizzaslice.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -40,7 +42,12 @@ public class UserService {
 
     public Boolean isAdmin(Long id){
         final User user = userRepository.findById(id).orElseThrow();
-        return user.isAdmin();
+        return user.getRole();
+    }
+
+    public List<Order> getUserOrders(Long id){
+        User user =  userRepository.findById(id).orElse(null);
+        return user.getOrders().stream().collect(Collectors.toList());
     }
 
 }

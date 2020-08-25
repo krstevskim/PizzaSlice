@@ -16,12 +16,12 @@ public class Extra {
     @Column
     private double price;
 
-    @Column
-    private Long order_id;
-
-    @ManyToOne
-    @JoinColumn(name = "order_id",nullable = false,insertable = false,updatable = false)
-    private Order order;
+//    @Column
+//    private Long order_id;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "order_id",nullable = false,insertable = false,updatable = false)
+//    private Order order;
 
     public Long getId() {
         return id;

@@ -17,15 +17,12 @@ public class Pizza {
     @Column
     private Double price;
 
-    @Column
-    private Long order_id;
-
     @OneToMany(mappedBy = "pizza")
     private Set<Ingredient> ingredients;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id",nullable = false,insertable = false,updatable = false)
-    private Order order;
+//    @ManyToOne
+//    @JoinColumn(name = "order_id",nullable = false,insertable = false,updatable = false)
+//    private Order order;
 
     public Long getId() {
         return id;

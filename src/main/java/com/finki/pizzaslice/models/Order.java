@@ -36,14 +36,14 @@ public class Order {
 //    private User user;
 
     @ManyToOne
-    @JoinColumn(name = "fk_user",nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "user_id",nullable = false,insertable = false,updatable = false)
     private User user;
 
-    @OneToMany(mappedBy = "order")
-    private Set<Pizza> pizzas;
+//    @OneToMany(mappedBy = "order")
+//    private Set<Pizza> pizzas;
 
-    @OneToMany(mappedBy = "order")
-    private Set<Extra> extras;
+//    @OneToMany(mappedBy = "order")
+//    private Set<Extra> extras;
 
     public Long getId() {
         return id;
@@ -65,17 +65,17 @@ public class Order {
         return time;
     }
 
-    public Set<Pizza> getPizzas() {
-        return pizzas;
-    }
+//    public Set<Pizza> getPizzas() {
+//        return pizzas;
+//    }
 
     public String getAddress() {
         return address;
     }
 
-    public Set<Extra> getExtras() {
-        return extras;
-    }
+//    public Set<Extra> getExtras() {
+//        return extras;
+//    }
 
 
 //    public User getUser() {

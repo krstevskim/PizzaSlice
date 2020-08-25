@@ -1,5 +1,6 @@
 package com.finki.pizzaslice.controllers;
 
+import com.finki.pizzaslice.models.Order;
 import com.finki.pizzaslice.models.User;
 import com.finki.pizzaslice.services.UserService;
 import com.sun.istack.NotNull;
@@ -44,5 +45,10 @@ public class UsersController {
     @GetMapping("{id}/admin")
     public ResponseEntity<Boolean> isUserAdmin(@PathVariable("id") Long id) {
         return ResponseEntity.ok(userService.isAdmin(id));
+    }
+
+    @GetMapping("{id}/orders")
+    public ResponseEntity<List<Order>> getUserOrders(@PathVariable("id") Long id){
+        return ResponseEntity.ok(userService.getUserOrders(id));
     }
 }

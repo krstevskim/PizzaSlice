@@ -29,7 +29,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Order> orders;
 
-    public Boolean isAdmin(){
+    public Boolean getRole(){
         return role;
     }
 
